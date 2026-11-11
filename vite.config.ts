@@ -3,9 +3,14 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
-export default defineConfig(() => {
+export default defineConfig(({ command }) => {
+  // For GitHub Pages: repo name is Pm-Telecom
+  const repoName = process.env.GITHUB_REPOSITORY
+    ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/`
+    : '/Pm-Telecom/';
+
   return {
-    base: './',
+    base: command === 'build' ? repoName : '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
