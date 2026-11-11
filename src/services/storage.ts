@@ -143,7 +143,6 @@ export function downloadInventoryCSV(items: StockItem[], categories: Category[])
     'স্টক পরিমাণ (Stock Qty)',
     'একক ক্রয়মূল্য ৳ (Unit Purchase Price)',
     'মোট ক্রয়মূল্য ৳ (Total Purchase Cost)',
-    'র‍্যাক / ড্রয়ার (Shelf Location)',
     'পাইকার / মহাজন (Supplier)',
     'নোট (Notes)',
   ];
@@ -167,7 +166,6 @@ export function downloadInventoryCSV(items: StockItem[], categories: Category[])
       item.quantity,
       item.unitPurchasePrice,
       totalCost,
-      clean(item.shelfLocation),
       clean(item.supplier),
       clean(item.notes),
     ].join(',');

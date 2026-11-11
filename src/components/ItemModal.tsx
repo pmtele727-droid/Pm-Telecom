@@ -29,7 +29,6 @@ export const ItemModal: React.FC<ItemModalProps> = ({
   const [quantity, setQuantity] = useState<number>(10);
   const [unitPurchasePrice, setUnitPurchasePrice] = useState<number>(100);
   const [lowStockThreshold, setLowStockThreshold] = useState<number>(5);
-  const [shelfLocation, setShelfLocation] = useState('');
   const [supplier, setSupplier] = useState('');
   const [notes, setNotes] = useState('');
 
@@ -43,7 +42,6 @@ export const ItemModal: React.FC<ItemModalProps> = ({
       setQuantity(Number(editItem.quantity || 0));
       setUnitPurchasePrice(Number(editItem.unitPurchasePrice || 0));
       setLowStockThreshold(Number(editItem.lowStockThreshold || 5));
-      setShelfLocation(editItem.shelfLocation || '');
       setSupplier(editItem.supplier || '');
       setNotes(editItem.notes || '');
     } else {
@@ -55,7 +53,6 @@ export const ItemModal: React.FC<ItemModalProps> = ({
       setQuantity(10);
       setUnitPurchasePrice(100);
       setLowStockThreshold(5);
-      setShelfLocation('');
       setSupplier('');
       setNotes('');
     }
@@ -88,7 +85,6 @@ export const ItemModal: React.FC<ItemModalProps> = ({
         quantity: Math.max(0, Number(quantity) || 0),
         unitPurchasePrice: Math.max(0, Number(unitPurchasePrice) || 0),
         lowStockThreshold: Math.max(1, Number(lowStockThreshold) || 5),
-        shelfLocation: shelfLocation.trim(),
         supplier: supplier.trim(),
         notes: notes.trim(),
       },
@@ -306,21 +302,8 @@ export const ItemModal: React.FC<ItemModalProps> = ({
             </div>
           </div>
 
-          {/* Location, Low Stock Threshold & Supplier */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1.5">
-                র‍্যাক / ড্রয়ার লোকেশন
-              </label>
-              <input
-                type="text"
-                placeholder="যেমন: Glass Box A-1, Drawer 2"
-                value={shelfLocation}
-                onChange={(e) => setShelfLocation(e.target.value)}
-                className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
-              />
-            </div>
-
+          {/* Low Stock Threshold & Supplier */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-semibold text-slate-300 mb-1.5">
                 কম স্টক সতর্কতা লেভেল (পিস)

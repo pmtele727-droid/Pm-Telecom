@@ -90,9 +90,8 @@ export const ItemTable: React.FC<ItemTableProps> = ({
           const matchModel = item.model.toLowerCase().includes(q);
           const matchBrand = item.brand.toLowerCase().includes(q);
           const matchVariant = item.variant?.toLowerCase().includes(q);
-          const matchShelf = item.shelfLocation?.toLowerCase().includes(q);
           const matchSupplier = item.supplier?.toLowerCase().includes(q);
-          if (!matchName && !matchModel && !matchBrand && !matchVariant && !matchShelf && !matchSupplier) {
+          if (!matchName && !matchModel && !matchBrand && !matchVariant && !matchSupplier) {
             return false;
           }
         }
@@ -295,7 +294,6 @@ export const ItemTable: React.FC<ItemTableProps> = ({
                   </button>
                 </th>
                 <th className="py-3 px-3">ক্যাটাগরি</th>
-                <th className="py-3 px-3">ড্রয়ার / র‍্যাক</th>
                 <th className="py-3 px-3 text-center">
                   <button
                     onClick={() => toggleSort('quantity')}
@@ -377,17 +375,6 @@ export const ItemTable: React.FC<ItemTableProps> = ({
                       <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700">
                         {cat?.nameBn || cat?.name || item.category}
                       </span>
-                    </td>
-
-                    {/* Shelf Location */}
-                    <td className="py-3.5 px-3 text-xs text-slate-300 whitespace-nowrap font-mono">
-                      {item.shelfLocation ? (
-                        <span className="bg-slate-950/50 px-2 py-0.5 rounded border border-slate-800">
-                          {item.shelfLocation}
-                        </span>
-                      ) : (
-                        <span className="text-slate-600">—</span>
-                      )}
                     </td>
 
                     {/* Quantity with quick +/- buttons */}

@@ -42,8 +42,7 @@ export const GlassQuickView: React.FC<GlassQuickViewProps> = ({
         !q ||
         item.model.toLowerCase().includes(q) ||
         item.name.toLowerCase().includes(q) ||
-        (item.variant && item.variant.toLowerCase().includes(q)) ||
-        (item.shelfLocation && item.shelfLocation.toLowerCase().includes(q));
+        (item.variant && item.variant.toLowerCase().includes(q));
 
       return matchesBrand && matchesSearch;
     });
@@ -196,13 +195,6 @@ export const GlassQuickView: React.FC<GlassQuickViewProps> = ({
                   {item.variant && (
                     <p className="text-xs text-slate-300 font-medium mt-0.5">
                       {item.variant}
-                    </p>
-                  )}
-
-                  {item.shelfLocation && (
-                    <p className="text-[11px] text-slate-400 mt-1 flex items-center gap-1">
-                      <span className="text-slate-500">লোকেশন:</span>
-                      <span className="text-slate-300 font-mono">{item.shelfLocation}</span>
                     </p>
                   )}
                 </div>

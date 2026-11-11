@@ -86,7 +86,6 @@ export const PrintInventoryView: React.FC<PrintInventoryViewProps> = ({
                 <th className="py-2 px-2">ক্রম</th>
                 <th className="py-2 px-2">আইটেম ও মডেল</th>
                 <th className="py-2 px-2">ক্যাটাগরি</th>
-                <th className="py-2 px-2">র‍্যাক / ড্রয়ার</th>
                 <th className="py-2 px-2 text-center">স্টক (পিস)</th>
                 <th className="py-2 px-2 text-right">একক ক্রয়মূল্য (৳)</th>
                 <th className="py-2 px-2 text-right">মোট ক্রয়মূল্য (৳)</th>
@@ -109,9 +108,6 @@ export const PrintInventoryView: React.FC<PrintInventoryViewProps> = ({
                     <td className="py-2 px-2 text-slate-600">
                       {categoryMap.get(item.category) || item.category}
                     </td>
-                    <td className="py-2 px-2 font-mono text-slate-600">
-                      {item.shelfLocation || '—'}
-                    </td>
                     <td className="py-2 px-2 text-center font-bold">{item.quantity}</td>
                     <td className="py-2 px-2 text-right">৳{item.unitPurchasePrice}</td>
                     <td className="py-2 px-2 text-right font-bold">
@@ -123,7 +119,7 @@ export const PrintInventoryView: React.FC<PrintInventoryViewProps> = ({
             </tbody>
             <tfoot>
               <tr className="border-t-2 border-slate-800 font-bold bg-slate-100">
-                <td colSpan={4} className="py-2.5 px-2 text-right">
+                <td colSpan={3} className="py-2.5 px-2 text-right">
                   সর্বমোট:
                 </td>
                 <td className="py-2.5 px-2 text-center text-sm">{totalUnits} পিস</td>
