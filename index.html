@@ -9,6 +9,13 @@
     <meta property="og:description" content="Irfan Creation দোকানের পণ্য স্টক ও ক্রয়মূল্য হিসাব ব্যবস্থাপনা এবং গুগল ড্রাইভ ব্যাকআপ।" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // When deployed directly to GitHub Pages root, redirect to pre-built docs folder
+      if (window.location.hostname.includes('github.io') && !window.location.pathname.includes('/docs')) {
+        var base = window.location.pathname.replace(/\/$/, '');
+        window.location.replace(base + '/docs/');
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
