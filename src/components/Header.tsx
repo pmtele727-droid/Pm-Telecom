@@ -21,8 +21,8 @@ interface HeaderProps {
   onExportJSON: () => void;
   isDriveConnected: boolean;
   userEmail: string | null;
-  activeTab: 'all' | 'glass' | 'gadgets';
-  setActiveTab: (tab: 'all' | 'glass' | 'gadgets') => void;
+  activeTab: 'grouped' | 'all' | 'glass' | 'gadgets';
+  setActiveTab: (tab: 'grouped' | 'all' | 'glass' | 'gadgets') => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -146,6 +146,18 @@ export const Header: React.FC<HeaderProps> = ({
         {/* View Tabs */}
         <div className="flex items-center gap-2 border-t border-slate-800/80 pt-2 pb-3 overflow-x-auto">
           <button
+            onClick={() => setActiveTab('grouped')}
+            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap ${
+              activeTab === 'grouped'
+                ? 'bg-emerald-500 text-slate-950 font-bold shadow-sm'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+            }`}
+          >
+            <FolderTree className="w-3.5 h-3.5" />
+            <span>ক্যাটাগরি অনুযায়ী গ্রুপ ভিউ (Category View)</span>
+          </button>
+
+          <button
             onClick={() => setActiveTab('all')}
             className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap ${
               activeTab === 'all'
@@ -154,7 +166,7 @@ export const Header: React.FC<HeaderProps> = ({
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
-            <span>সব স্টক ভিউ (All Items)</span>
+            <span>সব স্টক তালিকা (All Items)</span>
           </button>
 
           <button

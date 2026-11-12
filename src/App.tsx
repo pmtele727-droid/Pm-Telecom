@@ -32,6 +32,7 @@ import { CategoryManagerModal } from './components/CategoryManagerModal';
 import { GoogleDriveBackupModal } from './components/GoogleDriveBackupModal';
 import { StockHistoryModal } from './components/StockHistoryModal';
 import { PrintInventoryView } from './components/PrintInventoryView';
+import { CategoryGroupedView } from './components/CategoryGroupedView';
 import { AlertTriangle, Plus, Cloud, Package, Shield, Sparkles } from 'lucide-react';
 
 export default function App() {
@@ -42,7 +43,7 @@ export default function App() {
   const [isDriveConnected, setIsDriveConnected] = useState<boolean>(false);
 
   // Active view tab
-  const [activeTab, setActiveTab] = useState<'all' | 'glass' | 'gadgets'>('all');
+  const [activeTab, setActiveTab] = useState<'grouped' | 'all' | 'glass' | 'gadgets'>('grouped');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [isLowStockFiltered, setIsLowStockFiltered] = useState<boolean>(false);
 
@@ -306,6 +307,18 @@ export default function App() {
           onSelectLowStock={() => setIsLowStockFiltered((prev) => !prev)}
           isLowStockFiltered={isLowStockFiltered}
         />
+
+        {/* Tab 0: Category-wise Grouped View (Strictly Organized by Categories & Models) */}
+        {activeTab === 'grouped' && (
+          <CategoryGroupedView
+            categories={categories}
+            items={items}
+            onQuickAdjustQty={handleQuickAdjustQty}
+            onEditItem={handleEditItem}
+            onDeleteItem={handleDeleteItem}
+            onAddProductToCategory={(catId) => handleOpenAddItem(catId)}
+          />
+        )}
 
         {/* Tab 1: Screen Glass Quick View */}
         {activeTab === 'glass' && (
